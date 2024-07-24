@@ -1,25 +1,14 @@
 'use client';
 
 import { Hero } from '@/interfaces/hero';
-import axios from 'axios';
+import { PlusIcon } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
-export default function Heroes() {
-  const [data, setData] = useState<Hero[]>([]);
+type HeroesProps = {
+    data: Hero[];
+}
 
-  useEffect(() => {
-    axios
-      .get<Hero[]>('http://homologacao3.azapfy.com.br/api/ps/metahumans')
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }, []);
-
+export default function Heroes({ data }: HeroesProps) {
   if (data) {
     return (
       <div className="w-full p-2">
@@ -28,16 +17,21 @@ export default function Heroes() {
             return (
               <div key={hero.id} className="p-4 rounded-lg">
                 <Image
-                  className="rounded-t w-full"
+                  className="rounded-t w-full select-none"
                   src={hero.images.lg!}
                   alt={hero.name}
                   width={250}
                   height={250}
                 />
                 <div className="border-t border-neutral-800 rounded-b-lg p-4 bg-neutral-900">
-                  <span className="text-xs sm:text-xs md:text-sm lg:text-lg font-pretty font-bold">
-                    {hero.name}
-                  </span>
+                  <div className='flex flex-row justify-between items-center'>
+                    <span className="text-xs sm:text-xs md:text-sm lg:text-lg font-pretty font-bold">
+                      {hero.name}
+                    </span>
+                    <div className="p-2 bg-white rounded-full cursor-pointer hover:bg-neutral-200">
+                      <PlusIcon className="w-4 h-4 stroke-black" />
+                    </div>
+                  </div>
                 </div>
               </div>
             );
