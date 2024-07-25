@@ -20,7 +20,10 @@ export default function Search({ setData, data }: SearchProps) {
           .get<Hero[]>('http://homologacao3.azapfy.com.br/api/ps/metahumans')
           .then((response) => {
             setData(response.data);
-            return window.localStorage.setItem('data', JSON.stringify(response.data));
+            return window.localStorage.setItem(
+              'data',
+              JSON.stringify(response.data)
+            );
           })
           .catch((error) => {
             console.error('Error:', error);
@@ -38,7 +41,7 @@ export default function Search({ setData, data }: SearchProps) {
   };
 
   return (
-    <div className="flex flex-row lg:w-1/4 items-center">
+    <div className="flex flex-row items-center">
       <div className="p-2 bg-neutral-950 border-l border-y border-neutral-700 rounded-l-lg">
         <SearchIcon className="w-6 h-6 stroke-neutral-100" />
       </div>

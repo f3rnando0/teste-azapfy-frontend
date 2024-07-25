@@ -23,8 +23,8 @@ export default function Home() {
   }, []);
   return (
     <>
-      <Header setData={setData} data={data}/>
-      <Heroes data={data}/>
+      <Header setData={setData} data={data} />
+      <Heroes data={data} />
     </>
   );
 }

@@ -12,7 +12,7 @@ export interface Hero {
     alterEgos: string | null;
     firstAppearance: string | null;
     fullName: string | null;
-    placeOfBirth: string | null
+    placeOfBirth: string | null;
     publisher: string | null;
   };
   connections: {
@@ -38,6 +38,6 @@ export interface Hero {
   slug: string;
   work: {
     base: string | null;
-    occupation: string | null; 
+    occupation: string | null;
   };
 }
